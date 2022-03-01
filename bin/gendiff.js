@@ -23,13 +23,13 @@ program
     .argument('<filepath1>')
     .argument('<filepath2>')
     .action((filepath1, filepath2, options) => {
+        const absolutePath1 = path.isAbsolute(filepath1) ? filepath1 : getFixturePath(filepath1, 'utf8');
+        const absolutePath2 = path.isAbsolute(filepath2) ? filepath2 : getFixturePath(filepath2, 'utf8');
         if (options.format === 'json' || isJson(filepath1, filepath2)) {
-            const absolutePath1 = path.isAbsolute(filepath1) ? filepath1 : getFixturePath(filepath1, 'utf8');
-            const absolutePath2 = path.isAbsolute(filepath2) ? filepath2 : getFixturePath(filepath2, 'utf8');
             const file1 = JSON.parse(fs.readFileSync(absolutePath1));
             const file2 = JSON.parse(fs.readFileSync(absolutePath2));
             const difference = findDiff(file1, file2);
             console.log(difference);
-        }
+        } else console.log('Wrong file format');
     });
 program.parse();
