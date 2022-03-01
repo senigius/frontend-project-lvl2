@@ -1,8 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/senigius/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/senigius/frontend-project-lvl2/actions)
 
-![gendiff](https://github.com/senigius/
-frontend-project-lvl2/actions/workflows/github-actions-demo.yml/badge.svg)
+![gendiff](https://github.com/senigius/frontend-project-lvl2/actions/workflows/github-actions-demo.yml/badge.svg)
 
 Пример работы:
 Файлы JSON
