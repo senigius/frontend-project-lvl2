@@ -8,7 +8,7 @@ const findDiff = (obj1, obj2) => {
       return `  - ${key}: ${value1}`;
     }
     if (!_.has(obj1, key)) {
-        return `  + ${key}: ${value2}`;
+      return `  + ${key}: ${value2}`;
     }
     if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
       return `  ${key}: ${findDiff(value1, value2)}`;
