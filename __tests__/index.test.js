@@ -18,11 +18,11 @@ test('formatStylish', () => {
 });
 
 test('Wrong file format', () => {
-    const error = new Error('File format jsonsuper not supported')
-    expect(() => genDiff(getFixturePath('file1.jsonsuper'), getFixturePath('file2.json'))).toThrowError(error);
-})
+  const error = new Error('File format jsonsuper not supported');
+  expect(() => genDiff(getFixturePath('file1.jsonsuper'), getFixturePath('file2.json'))).toThrowError(error);
+});
 
 test('Wrong output format', () => {
-    const error = 'Output format mp3 not supported';
-    expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'mp3')).toBe(error);
-  });
+  const error = 'Output format mp3 not supported';
+  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'mp3')).toBe(error);
+});
