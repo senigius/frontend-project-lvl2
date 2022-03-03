@@ -1,23 +1,23 @@
 import fs from 'fs';
 import path from 'path';
-import findDiff from './findDiff.js';
+import formatToStylish from './stylishFormat.js';
+import parse from './parser.js';
 
-const isJSON = (file) => file.slice(-5) === '.json';
+const fileFormat = (filepath) => path.extname(filepath).slice(1);
 
-const normalizePath = (filepath) => {
-  const getFixturePath = (normalPath) => path.resolve(process.cwd(), '__fixtures__', normalPath);
-  return path.isAbsolute(filepath) ? filepath : getFixturePath(filepath, 'utf8');
+const getData = (filepath) => {
+  const getFixturePath = (normalPath) => path.resolve(process.cwd(), '__tests__/__fixtures__', normalPath);
+  const absPath = path.isAbsolute(filepath) ? filepath : getFixturePath(filepath, 'utf8');
+  return fs.readFileSync(absPath);
 };
 
-const genDiff = (filepath1, filepath2, format) => {
-  const path1 = normalizePath(filepath1);
-  const path2 = normalizePath(filepath2);
-  if (format === 'json' || (isJSON(path1) && isJSON(path2))) {
-    const data1 = JSON.parse(fs.readFileSync(path1));
-    const data2 = JSON.parse(fs.readFileSync(path2));
-    return findDiff(data1, data2);
+const genDiff = (filepath1, filepath2, format = 'stylish') => {
+  if (format === 'stylish') {
+    const data1 = parse(fileFormat(filepath1), getData(filepath1));
+    const data2 = parse(fileFormat(filepath2), getData(filepath2));
+    return formatToStylish(data1, data2);
   }
-  return 'Wrond format';
+  return `Output format ${format} not supported`;
 };
 
 export default genDiff;
