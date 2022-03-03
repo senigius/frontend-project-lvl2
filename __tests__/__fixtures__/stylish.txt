@@ -1,8 +1,10 @@
 {
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
+  - Amount of money: 123456
+  + Amount of money: 12
+    Date of birth: 02.08.2000
+  + Happines: gone
+  - Married: false
+  + Married: true
+    name: Ivan
+  - surname: Ivanov
 }

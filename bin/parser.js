@@ -5,7 +5,7 @@ const parse = (type, content) => {
     case 'json':
       return JSON.parse(content);
     case 'yml':
-      return yaml.safeLoad(content);
+      return yaml.load(content);
     default:
       throw new Error(`File format ${type} not supported`);
   }

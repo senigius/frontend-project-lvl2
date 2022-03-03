@@ -11,8 +11,14 @@ const getFixturePath = (filename) => path.join(__dirname, '.', '__fixtures__', f
 
 const readFixture = (filename) => fs.readFileSync(getFixturePath(`${filename}.txt`), 'utf8');
 
-test('formatStylish', () => {
+test('formatStylish from json', () => {
   const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
+  const expectResult = readFixture('stylish');
+  expect(result).toEqual(expectResult);
+});
+
+test('formatStylish from yml', () => {
+  const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
   const expectResult = readFixture('stylish');
   expect(result).toEqual(expectResult);
 });
