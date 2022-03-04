@@ -29,6 +29,12 @@ test('Wrong file format', () => {
 });
 
 test('Wrong output format', () => {
-  const error = 'Output format mp3 not supported';
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'mp3')).toBe(error);
+  const error2 = new Error('File format txt not supported');
+  expect(() => genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'txt')).toThrowError(error2);
+});
+
+test('formatStylish from json 2', () => {
+  const result = genDiff(getFixturePath('file3.json'), getFixturePath('file4.json'));
+  const expectResult = readFixture('stylish2');
+  expect(result).toEqual(expectResult);
 });

@@ -1,14 +1,9 @@
 import yaml from 'js-yaml';
 
-const parse = (type, content) => {
-  switch (type) {
-    case 'json':
-      return JSON.parse(content);
-    case 'yml':
-      return yaml.load(content);
-    default:
-      throw new Error(`File format ${type} not supported`);
-  }
+const parse = (type, data) => {
+  if (type === 'json') return JSON.parse(data);
+  if (type === 'yml') return yaml.load(data);
+  throw new Error(`File format ${type} not supported`);
 };
 
 export default parse;
