@@ -23,6 +23,12 @@ test('formatStylish from yml', () => {
   expect(result).toEqual(expectResult);
 });
 
+test('formatPlain from yml', () => {
+  const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain');
+  const expectResult = readFixture('plain');
+  expect(result).toEqual(expectResult);
+});
+
 test('Wrong file format', () => {
   const error = new Error('File format docx not supported');
   expect(() => genDiff(getFixturePath('file1.docx'), getFixturePath('file2.json'))).toThrowError(error);

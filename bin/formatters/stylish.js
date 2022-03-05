@@ -1,17 +1,17 @@
 import _ from 'lodash';
 
-const formatItem = (value, depth) => {
-  if (!_.isObjectLike(value)) {
-    return value;
+const formatItem = (item, depth) => {
+  if (!_.isObject(item)) {
+    return item;
   }
   const indent = depth * 4;
   const newIndent = ' '.repeat(indent); // отступ в 4 пробела для вложенных объектов
-  const keys = Object.keys(value);
+  const keys = Object.keys(item);
   const result = keys.map((key) => {
-    if (_.isObjectLike(value[key])) {
-      return `${newIndent}    ${key}: ${formatItem(value[key], depth + 1)}`;
+    if (_.isObject(item[key])) {
+      return `${newIndent}    ${key}: ${formatItem(item[key], depth + 1)}`;
     }
-    return `${newIndent}    ${key}: ${value[key]}`;
+    return `${newIndent}    ${key}: ${item[key]}`;
   });
   return ['{', ...result, `${newIndent}}`].join('\n');
 };
