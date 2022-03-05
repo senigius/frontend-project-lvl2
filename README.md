@@ -10,3 +10,5 @@
 <a href="https://asciinema.org/a/dgP7K6cEWbX2Nk6vQkESpRyND" target="_blank"><img src="https://asciinema.org/a/dgP7K6cEWbX2Nk6vQkESpRyND.svg" /></a>
 Файлы yml
 <a href="https://asciinema.org/a/gJro4xKUDDS2dF5qpUbf1SIBN" target="_blank"><img src="https://asciinema.org/a/gJro4xKUDDS2dF5qpUbf1SIBN.svg" /></a>
+Файлы со вложенной структурой 
+<a href="https://asciinema.org/a/8CUOFniSAtFVriCheFw0Zm93B" target="_blank"><img src="https://asciinema.org/a/8CUOFniSAtFVriCheFw0Zm93B.svg" /></a>

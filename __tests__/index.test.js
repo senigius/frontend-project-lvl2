@@ -24,17 +24,11 @@ test('formatStylish from yml', () => {
 });
 
 test('Wrong file format', () => {
-  const error = new Error('File format jsonsuper not supported');
-  expect(() => genDiff(getFixturePath('file1.jsonsuper'), getFixturePath('file2.json'))).toThrowError(error);
+  const error = new Error('File format docx not supported');
+  expect(() => genDiff(getFixturePath('file1.docx'), getFixturePath('file2.json'))).toThrowError(error);
 });
 
 test('Wrong output format', () => {
   const error2 = new Error('File format txt not supported');
   expect(() => genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'txt')).toThrowError(error2);
-});
-
-test('formatStylish from json 2', () => {
-  const result = genDiff(getFixturePath('file3.json'), getFixturePath('file4.json'));
-  const expectResult = readFixture('stylish2');
-  expect(result).toEqual(expectResult);
 });
