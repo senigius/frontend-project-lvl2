@@ -14,3 +14,5 @@
 <a href="https://asciinema.org/a/8CUOFniSAtFVriCheFw0Zm93B" target="_blank"><img src="https://asciinema.org/a/8CUOFniSAtFVriCheFw0Zm93B.svg" /></a>
 Вывод в формате plain
 <a href="https://asciinema.org/a/56QKERcNVNcpPMj7EaMPjfMYX" target="_blank"><img src="https://asciinema.org/a/56QKERcNVNcpPMj7EaMPjfMYX.svg" /></a>
+Вывод в формате json
+<a href="https://asciinema.org/a/D5UmESANdHuw02AWbjV8GgsUp" target="_blank"><img src="https://asciinema.org/a/D5UmESANdHuw02AWbjV8GgsUp.svg" /></a>
