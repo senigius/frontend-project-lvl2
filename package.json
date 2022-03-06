@@ -2,7 +2,10 @@
   "name": "@hexlet/code",
   "version": "0.0.1",
   "description": "Programm to find the difference between files",
-  "main": "bin/gendiff.js",
+  "main": "bin/index.js",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "scripts": {
     "test": "jest"
   },
