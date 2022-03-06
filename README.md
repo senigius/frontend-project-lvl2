@@ -5,12 +5,12 @@
 
 <a href="https://codeclimate.com/github/senigius/frontend-project-lvl2/test_coverage"><img src="https://api.codeclimate.com/v1/badges/1412e5be6d48d7aa90b5/test_coverage" /></a>
 
-## Для установки и запуска:
+### Для установки и запуска:
 1) git clone https://github.com/senigius/frontend-project-lvl2
 2) cd frontend-project-lvl2
 3) make install
 
-Пример работы (исходные файлы лежат в __fixtures__):
+# Пример работы (исходные файлы лежат в __fixtures__):
 Файлы JSON
 <a href="https://asciinema.org/a/dgP7K6cEWbX2Nk6vQkESpRyND" target="_blank"><img src="https://asciinema.org/a/dgP7K6cEWbX2Nk6vQkESpRyND.svg" /></a>
 Файлы yml
