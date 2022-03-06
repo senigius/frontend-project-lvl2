@@ -1,10 +1,12 @@
 import _ from 'lodash';
 
+const spaceBeforeBracket = 4;
+
 const formatItem = (item, depth) => {
   if (!_.isObject(item)) {
     return item;
   }
-  const indent = depth * 4;
+  const indent = depth * spaceBeforeBracket;
   const newIndent = ' '.repeat(indent); // отступ в 4 пробела для вложенных объектов
   const keys = Object.keys(item);
   const result = keys.map((key) => {
@@ -19,8 +21,8 @@ const formatItem = (item, depth) => {
 const formatToStylish = (data) => {
   const getItems = (items, depth) => items.flatMap((item) => {
     const newDepth = depth + 1;
-    const indent = ' '.repeat(depth * 4); // отступ в 4 пробела перед открывающей скобкой для вложенных объектов
-    const backIndent = ' '.repeat((depth * 4) + 4); // и для закрывающей скобки
+    const indent = ' '.repeat(depth * spaceBeforeBracket); // отступ в 4 пробела перед открывающей скобкой для вложенных объектов
+    const backIndent = ' '.repeat((depth * spaceBeforeBracket) + spaceBeforeBracket); // и для закрывающей скобки
     switch (item.type) {
       case 'haveChildren':
         return `${indent}    ${item.key}: ${['{', ...getItems(item.children, newDepth), `${backIndent}}`].join('\n')}`;

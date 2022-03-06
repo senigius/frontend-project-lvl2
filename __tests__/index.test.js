@@ -9,23 +9,29 @@ const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '.', '__fixtures__', filename);
 
-const readFixture = (filename) => fs.readFileSync(getFixturePath(`${filename}.txt`), 'utf8');
+const readFixture = (filename) => fs.readFileSync(getFixturePath(filename), 'utf8');
 
-test('formatStylish from json', () => {
-  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
-  const expectResult = readFixture('stylish');
+const filesForTests = [
+  ['file1.json', 'file2.json'],
+  ['file1.yml', 'file2.yml'],
+  ['file1.json', 'file2.yml'],
+];
+
+test.each(filesForTests)('Format stylish', (file1, file2) => {
+  const result = genDiff(getFixturePath(file1), getFixturePath(file2));
+  const expectResult = readFixture('resultStylish.txt');
   expect(result).toEqual(expectResult);
 });
 
-test('formatStylish from yml', () => {
-  const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
-  const expectResult = readFixture('stylish');
+test.each(filesForTests)('Format plain', (file1, file2) => {
+  const result = genDiff(getFixturePath(file1), getFixturePath(file2), 'plain');
+  const expectResult = readFixture('resultPlain.txt');
   expect(result).toEqual(expectResult);
 });
 
-test('formatPlain from yml', () => {
-  const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain');
-  const expectResult = readFixture('plain');
+test.each(filesForTests)('Format json', (file1, file2) => {
+  const result = genDiff(getFixturePath(file1), getFixturePath(file2), 'json');
+  const expectResult = readFixture('resultJson.txt');
   expect(result).toEqual(expectResult);
 });
 

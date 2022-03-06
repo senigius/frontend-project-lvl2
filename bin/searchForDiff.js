@@ -6,19 +6,21 @@ const searchForDiff = (obj1, obj2) => {
   return sortedKeys.map((key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
-    let result = { key, value: value1, type: 'unchanged' };
     if (!_.has(obj2, key)) {
-      result = { key, value: value1, type: 'deleted' };
-    } else if (!_.has(obj1, key)) {
-      result = { key, value: value2, type: 'added' };
-    } else if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
-      result = { key, children: searchForDiff(value1, value2), type: 'haveChildren' };
-    } else if (!_.isEqual(value1, value2)) {
-      result = {
+      return { key, value: value1, type: 'deleted' };
+    }
+    if (!_.has(obj1, key)) {
+      return { key, value: value2, type: 'added' };
+    }
+    if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
+      return { key, children: searchForDiff(value1, value2), type: 'haveChildren' };
+    }
+    if (!_.isEqual(value1, value2)) {
+      return {
         key, oldValue: value1, newValue: value2, type: 'changed',
       };
     }
-    return result;
+    return { key, value: value1, type: 'unchanged' };
   });
 };
 
