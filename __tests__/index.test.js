@@ -1,13 +1,10 @@
 import fs from 'fs';
-import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
+import path from 'path';
 import genDiff from '../src/index.js';
 
 /* eslint-disable no-underscore-dangle */
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
-const getFixturePath = (filename) => path.join(__dirname, '.', '__fixtures__', filename);
+const getFixturePath = (filename) => path.join('__fixtures__', filename);
 
 const readFixture = (filename) => fs.readFileSync(getFixturePath(filename), 'utf8');
 
@@ -20,6 +17,12 @@ const filesForTests = [
 test.each(filesForTests)('Check gendiff %#', (file1, file2, format) => {
   const result = genDiff(getFixturePath(file1), getFixturePath(file2), format);
   const expectResult = readFixture(`${format}.txt`);
+  expect(result).toEqual(expectResult);
+});
+
+test('Default output format', () => {
+  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
+  const expectResult = readFixture('stylish.txt');
   expect(result).toEqual(expectResult);
 });
 

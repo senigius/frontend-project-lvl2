@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Programm to find the difference between files",
   "main": "src/index.js",
   "bin": {

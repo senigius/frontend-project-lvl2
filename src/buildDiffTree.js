@@ -1,13 +1,9 @@
 import _ from 'lodash';
 
-// Я не совсем понял, что имелось ввиду по добавлением на верхний уровень объекта с типом рут
-// Я добавил, но получилось просто больше строк кода и в formatters/index.js теперь
-// идёт обращение не к data а, к data.root
-// Можно поподробнее объяснить, что именно от меня требуется?
-const buildDiffTree = (obj1, obj2, root = true) => {
+const buildDiffTree = (obj1, obj2) => {
   const keys = _.union(Object.keys(obj1), Object.keys(obj2));
   const sortedKeys = _.sortBy(keys);
-  const tree = sortedKeys.map((key) => {
+  return sortedKeys.map((key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
     if (!_.has(obj2, key)) {
@@ -26,7 +22,6 @@ const buildDiffTree = (obj1, obj2, root = true) => {
     }
     return { key, value: value1, type: 'unchanged' };
   });
-  return (root === false) ? tree : { root: tree };
 };
 
 export default buildDiffTree;
